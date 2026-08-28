@@ -10,12 +10,10 @@ SCOPES = ['https://www.googleapis.com/auth/drive.readonly']
 
 target_env = os.environ.get('TARGET_ACCOUNT')
 
-# Jika dari runner dapet '1', maka dipaksa cari '1.zip'
-# Jika tidak ada env, default list '1.zip' sampai '10.zip'
 if target_env:
     TARGET_SM = [f"{target_env}.zip"]
 else:
-    TARGET_SM = ['61.zip', '62.zip', '63.zip', '64.zip', '65.zip', '66.zip', '67.zip', '68.zip', '70.zip']
+    TARGET_SM = ['61.zip', '62.zip', '63.zip', '64.zip', '65.zip', '66.zip', '67.zip', '68.zip', '69.zip', '70.zip']
 
 def main():
     sa_key_info = os.environ.get('GCP_SA_KEY')
@@ -45,7 +43,6 @@ def main():
         f_id = file['id']
         f_name = file['name']
                 
-        # Cek persis sama dengan '1.zip', '2.zip', dll. (Bukan substring)
         if f_name in TARGET_SM:
             print(f"--> Mengunduh target: {f_name} (ID: {f_id})...")
             
